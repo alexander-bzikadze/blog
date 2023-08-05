@@ -1,9 +1,12 @@
-name: Deploy static content to Pages
+name: Deploy content to Github Pages
 
 on:
-  push:
-    branches: ["main"]
   workflow_dispatch:
+  workflow_run:
+    workflows: ["Build"]
+    branches: [main]
+    types: 
+      - completed
 
 permissions:
   contents: read
@@ -21,14 +24,18 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - uses: actions/download-artifact@v3
+        id: download
+        with:
+          name: build
+          path: dist
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          path: 'dist'
+          path: dist
+          if-no-files-found: error
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
