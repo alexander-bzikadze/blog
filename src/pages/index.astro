@@ -1,0 +1,70 @@
+---
+---
+<style>
+	body {
+    	margin-left: 50px;
+  	}
+  
+  	p {
+    	font-family: "Courier New", Courier, monospace;
+  	}
+  
+  	#head1 {
+    	color: purple;
+  	}
+  
+  	#head2 {
+    	color: blue;
+  	}
+  
+  	.wow {
+    	color: red;
+    	font-variant: small-caps;
+    	font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+    	font-size: 42px;
+  	}
+  
+  	h1, h2 {
+    	font-family: cursive;
+  	}
+  
+  	a {
+    	text-decoration: none;
+    	color: blueviolet;
+  	}
+  
+  	a:hover {
+    	text-decoration: underline;
+  	}
+</style>
+
+<html lang="en">
+	<head>
+		<title>Blog</title>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+	</head>
+
+  	<body>
+    	<h1 class="wow">Heading 1</h1>
+    	<h2 id="head1">Sub Heading 1</h2>
+    	<p>
+      		Lorem, <a href="https://www.lipsum.com/">ipsum</a>
+    		dolor sit amet consectetur adipisicing elit.
+	    </p>
+    	<ul>
+      		<li>List item 1</li>
+      		<li class="wow">List item 2</li>
+      		<li>List item 3</li>
+    	</ul>
+    	<h2 id="head2">Sub Heading 2</h2>
+    	<p>
+      		Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum debitis
+      		molestias <span class="wow">omnis</span> voluptas, consequatur ex cumque
+      		velit libero quidem est?
+    	</p>
+  	</body>
+</html>
+
