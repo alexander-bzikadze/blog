@@ -24,16 +24,20 @@ jobs:
         with:
           deno-version: v1.36.0
 
-      - name: Cache Deno modules
-        uses: actions/cache@v2
+      - name: Restore node modules
+        uses: actions/cache/restore@v3
         with:
           path: node_modules
-          key: ${{ runner.os }}-deno-${{ hashFiles('**/dept.ts') }}
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('deno.lock') }}
           restore-keys: |
-            ${{ runner.os }}-deno-
-            
+            ${{ runner.os }}-node-modules-
       - name: Cache dependencies
         run: deno cache --node-modules-dir dept.ts
+      - name: Save node modules
+        uses: actions/cache/save@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('deno.lock') }}
 
       - name: Build
         run: deno task build
