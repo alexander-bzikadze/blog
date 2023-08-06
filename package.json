@@ -8,6 +8,7 @@
     "preview": "astro preview"
   },
   "dependencies": {
-    "astro": "^2.10.1"
+    "astro": "^2.10.1",
+    "astro-relative-links": "^0.3.4"
   }
 }
