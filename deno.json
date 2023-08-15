@@ -1,2 +1,5 @@
 {
+    "tasks": {
+        "install": "deno cache --node-modules-dir dept.ts"
+    }
 }

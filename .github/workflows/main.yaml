@@ -32,7 +32,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-modules-
       - name: Cache dependencies
-        run: deno cache --node-modules-dir dept.ts
+        run: deno task install
       - name: Save node modules
         uses: actions/cache/save@v3
         with:
