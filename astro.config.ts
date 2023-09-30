@@ -1,6 +1,8 @@
+import type { AstroIntegration } from 'astro'
 import { defineConfig } from 'astro/config';
-import svelte from '@astrojs/svelte'
 import relativeLinks from "astro-relative-links";
+import svelte from '@astrojs/svelte'
+import tailwind from "@astrojs/tailwind"
 
 export default defineConfig({
     build: {
@@ -10,9 +12,12 @@ export default defineConfig({
   output: 'static',
   trailingSlash: 'never',
   integrations: [
-    relativeLinks(),
+    relativeLinks() as AstroIntegration,
     svelte({
       preprocess: [],
+    }),
+    tailwind({
+      configFile: 'tailwind.config.ts'
     }),
   ],
 });
