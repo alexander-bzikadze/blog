@@ -22,7 +22,7 @@ jobs:
       - name: Setup Deno
         uses: denoland/setup-deno@v1
         with:
-          deno-version: v1.36.0
+          deno-version: v1.37.1
 
       - name: Restore node modules
         uses: actions/cache/restore@v3

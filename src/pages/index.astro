@@ -1,21 +1,9 @@
 ---
 import Component from "../lib/component.svelte"
 ---
-<style>
-	body {
-    	margin-left: 50px;
-  	}
-  
+<style lang="postcss">
   	p {
-    	font-family: "Courier New", Courier, monospace;
-  	}
-  
-  	#head1 {
-    	color: purple;
-  	}
-  
-  	#head2 {
-    	color: blue;
+    	@apply font-sans;
   	}
   
   	.wow {
@@ -23,19 +11,6 @@ import Component from "../lib/component.svelte"
     	font-variant: small-caps;
     	font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
     	font-size: 42px;
-  	}
-  
-  	h1, h2 {
-    	font-family: cursive;
-  	}
-  
-  	a {
-    	text-decoration: none;
-    	color: blueviolet;
-  	}
-  
-  	a:hover {
-    	text-decoration: underline;
   	}
 </style>
 
@@ -48,11 +23,11 @@ import Component from "../lib/component.svelte"
 		<meta name="generator" content={Astro.generator} />
 	</head>
 
-  	<body>
-    	<h1 class="wow">Heading 1</h1>
-    	<h2 id="head1">Sub Heading 1</h2>
+  	<body class="ml-12">
+    	<h1 class="text-purple-700">Heading 1</h1>
+    	<h2 class="text-blue-700">Sub Heading 1</h2>
     	<p>
-      		Lorem, <a href="https://www.lipsum.com/">ipsum</a>
+      		Lorem, <a class="text-purple-900 no-underline hover:underline" href="https://www.lipsum.com/">ipsum</a>
     		dolor sit amet consectetur adipisicing elit.
 	    </p>
     	<ul>
