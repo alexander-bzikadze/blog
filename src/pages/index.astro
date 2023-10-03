@@ -1,20 +1,17 @@
 ---
-import Component from "../lib/component.svelte"
+import Global from "../lib/Global.astro"
+import Header from "../lib/Header.astro"
+import Dialogue from "../lib/Dialogue.svelte"
+import background from "../assets/Background.png"
+import speaker from "../assets/Speaker.png"
 ---
-<style lang="postcss">
-  	p {
-    	@apply font-sans;
-  	}
-  
-  	.wow {
-    	color: red;
-    	font-variant: small-caps;
-    	font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-    	font-size: 42px;
-  	}
-</style>
+<script>
+	function action() {
+		console.log('not implemented')
+	}
+</script>
 
-<html lang="en">
+<html class="h-screen" lang="en">
 	<head>
 		<title>Blog</title>
 		<meta charset="utf-8" />
@@ -23,26 +20,22 @@ import Component from "../lib/component.svelte"
 		<meta name="generator" content={Astro.generator} />
 	</head>
 
-  	<body class="ml-12">
-    	<h1 class="text-purple-700">Heading 1</h1>
-    	<h2 class="text-blue-700">Sub Heading 1</h2>
-    	<p>
-      		Lorem, <a class="text-purple-900 no-underline hover:underline" href="https://www.lipsum.com/">ipsum</a>
-    		dolor sit amet consectetur adipisicing elit.
-	    </p>
-    	<ul>
-      		<li>List item 1</li>
-      		<li class="wow">List item 2</li>
-      		<li>List item 3</li>
-    	</ul>
-    	<h2 id="head2">Sub Heading 2</h2>
-    	<p>
-      		Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum debitis
-      		molestias <span class="wow">omnis</span> voluptas, consequatur ex cumque
-      		velit libero quidem est?
-    	</p>
-
-		<Component client:only="svelte" />
+  	<body class="h-full flex flex-col justify-stretch bg-center bg-no-repeat" style={`background-image: url(${background.src});`}>
+		<Global/>
+		<Header class="w-full"/>
+		<main class="h-full">
+			<div class="h-full w-full flex justify-center">
+				<Dialogue class="h-full max-w-[90%] md:max-w-[50%]" client:only="svelte" messages={[
+					"Hey!",
+					"My name is Alexander Bzikadze! I am a Software Engineering Manager, based in Tokyo. My professional interests cover Teams Management,  Technical Leadership and Organization Design. I am also a pianist, D&D Game Master and Georgian cuisine enthusiast.",
+					"It is a pleasure to welcome you!",
+					"What would you like to learn next?",
+				]} speaker={speaker.src} navigations={[
+					{ text: 'Your Blog' }
+				]}
+				/>
+			</div>
+		</main>
   	</body>
 </html>
 

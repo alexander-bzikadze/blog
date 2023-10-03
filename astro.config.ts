@@ -2,6 +2,7 @@ import type { AstroIntegration } from 'astro'
 import { defineConfig } from 'astro/config';
 import relativeLinks from "astro-relative-links";
 import svelte from '@astrojs/svelte'
+import { typescript } from 'svelte-preprocess'
 import tailwind from "@astrojs/tailwind"
 
 export default defineConfig({
@@ -14,7 +15,12 @@ export default defineConfig({
   integrations: [
     relativeLinks() as AstroIntegration,
     svelte({
-      preprocess: [],
+      preprocess: [
+        typescript({
+          tsconfigFile: true,
+          reportDiagnostics: true,
+        }),
+      ],
     }),
     tailwind({
       configFile: 'tailwind.config.ts'
