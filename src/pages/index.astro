@@ -30,7 +30,8 @@ import speaker from "../assets/Speaker.png"
 					"My name is Alexander Bzikadze! I am a Software Engineering Manager, based in Tokyo. My professional interests cover Teams Management,  Technical Leadership and Organization Design. I am also a pianist, D&D Game Master and Georgian cuisine enthusiast.",
 					"It is a pleasure to welcome you!",
 					"What would you like to learn next?",
-				]} speaker={speaker.src} navigations={[
+				// TODO: Find a proper way to ensure images urls are relative
+				]} speaker={'.' + speaker.src} navigations={[
 					{ text: 'Your Blog' }
 				]}
 				/>
