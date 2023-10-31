@@ -3,5 +3,5 @@
 </script>
 
 <div class="bg-perfect bg-opacity-30 glass-morphism p-1 w-fit rounded {$$props.class ?? ''}">
-    {message}
+    <span>{message}</span>
 </div>

@@ -1,6 +1,6 @@
 <script lang="ts" context="module">
   import Message from './Message.svelte'
-  import Button from "./Button.svelte"
+  import Button from "./SendButton.svelte"
 </script>
 
 <script lang="ts">
