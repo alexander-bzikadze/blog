@@ -14,14 +14,15 @@ import speaker from "../assets/Speaker.png"
 			Add [Material Icons](https://developers.google.com/fonts/docs/material_icons)
 			New icons can be [searched for](https://fonts.google.com/icons) 
 		-->
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<!-- Add [Open Sans font](https://fonts.google.com/specimen/Open+Sans) -->
+	  	<link href="https://fonts.googleapis.com/css?family=Open Sans" rel='stylesheet'>
 
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 	</head>
 
-  	<body class="h-full flex flex-col justify-stretch bg-center bg-no-repeat backdrop-blur" style={`background-image: url(${background.src});`}>
+  	<body class="h-full flex flex-col justify-stretch bg-center bg-no-repeat backdrop-blur font-sans" style={`background-image: url(${background.src});`}>
 		<Global/>
 		<Header class="w-full"/>
 		<main class="h-full">
