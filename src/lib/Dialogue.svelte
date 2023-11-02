@@ -1,6 +1,6 @@
 <script lang="ts" context="module">
   import Message from './Message.svelte'
-  import Button from "./SendButton.svelte"
+  import "@material/web/button/elevated-button"
 </script>
 
 <script lang="ts">
@@ -22,7 +22,19 @@
   </div>
   <div class="flex flex-row justify-evenly">
     {#each navigations as navi}
-      <Button text={navi.text} action={() => alert('Not Implemented')}/>
+      <!-- TODO: Add back glass morphism -->
+      <md-elevated-button name="Your Blog" on:click={() => alert('Not Implemented')}>
+        <span slot="icon" class="material-icons text-white">send</span>
+        <span class="text-white text-base font-bold">Your Blog</span>
+      </md-elevated-button>
     {/each}
   </div>
 </div>
+
+<style>
+  md-elevated-button {
+    --md-elevated-button-container-color: theme("colors.love");
+    --md-elevated-button-container-shape: theme("borderRadius.DEFAULT");
+    --md-elevated-button-label-text-color: theme("colors.white");
+  }
+</style>
