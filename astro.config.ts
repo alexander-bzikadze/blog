@@ -4,6 +4,7 @@ import relativeLinks from "astro-relative-links";
 import svelte from '@astrojs/svelte'
 import { typescript } from 'svelte-preprocess'
 import tailwind from "@astrojs/tailwind"
+import starlight from '@astrojs/starlight';
 
 export default defineConfig({
     build: {
@@ -25,5 +26,8 @@ export default defineConfig({
     tailwind({
       configFile: 'tailwind.config.ts'
     }),
+    starlight({
+      title: "Alexander Bzikadze Personal Website",
+    })
   ],
 });
