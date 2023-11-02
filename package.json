@@ -15,6 +15,7 @@
     "astro-relative-links": "^0.3.4",
     "svelte": "^4.2.1",
     "svelte-preprocess": "^5.0.4",
-    "tailwindcss": "^3.3.3"
+    "tailwindcss": "^3.3.3",
+    "@material/web": "^1.0.1"
   }
 }
