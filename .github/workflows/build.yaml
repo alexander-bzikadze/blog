@@ -2,6 +2,15 @@ name: Build and Deploy
 
 on:
   workflow_call:
+    inputs:
+      site:
+        description: 'The domain where to deploy. Will be used for absolute references in the build.'
+        required: false
+        type: string
+      basepath:
+        description: 'Base path of the build.'
+        required: false
+        type: string
 
 permissions:
   contents: read
@@ -34,6 +43,9 @@ jobs:
 
       - name: Build
         run: deno task build
+        env:
+          ASTRO_SITE: ${{ inputs.site }}
+          ASTRO_BASE_URL: ${{ inputs.basepath }}
       - name: Upload
         uses: actions/upload-artifact@v3
         with:

@@ -1,11 +1,14 @@
 import type { AstroUserConfig, AstroIntegration } from 'astro'
-import relativeLinks from "astro-relative-links";
 import svelte from '@astrojs/svelte'
 import { typescript } from 'svelte-preprocess'
 import tailwind from "@astrojs/tailwind"
 import starlight from '@astrojs/starlight';
 import mermaid from "./src/plugins/mermaid"
+import "./.polyfill/process"
 
+
+const base: string | undefined = process.env.ASTRO_BASE_URL
+const site: string | undefined = process.env.ASTRO_SITE
 
 /**
  * @description Excludes sharp as it is not possible to use with Deno at the moment.
@@ -64,18 +67,19 @@ const starlightIntegration: AstroIntegration = starlight({
 })
 
 export default {
+  base,
+  site,
   build: {
     format: 'file',
   },
   vite: excludeSharpFix,
   compressHTML: true,
   output: 'static',
-  trailingSlash: 'ignore',
+  trailingSlash: 'always',
   markdown: {
     remarkPlugins: [mermaid]
   },
   integrations: [
-    relativeLinks() as AstroIntegration,
     svelteIntegration,
     tailwind({
       configFile: 'tailwind.config.ts'
