@@ -39,10 +39,10 @@ const svelteIntegration: AstroIntegration = svelte({
 const architectureSidebar: NonNullable<Parameters<typeof starlight>[0]['sidebar']>[0] = {
   label: 'Architecture Description',
   items: [
-    { label: "Architecture Description", link: "/architecture" },
+    { label: "Architecture Description", link: "/architecture/" },
     { 
       label: 'Stakeholders', 
-      autogenerate: { directory: 'architecture/stakeholders' } 
+      autogenerate: { directory: 'architecture/stakeholders/' } 
     },
   ]
 }
@@ -70,7 +70,7 @@ export default {
   base,
   site,
   build: {
-    format: 'file',
+    format: 'directory',
   },
   vite: excludeSharpFix,
   compressHTML: true,
