@@ -1,0 +1,24 @@
+name: Prepare build parameters
+
+on:
+  workflow_call:
+    # TODO: preview
+    outputs:
+      site: 
+        description: Github pages site
+        value: ${{ jobs.prepare.outputs.site }}
+      basepath:
+        description: Github pages base path
+        value: ${{ jobs.prepare.outputs.basepath }}
+    
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Extract repo name
+        id: extract
+        run: |
+          echo "GITHUB_REPO_NAME=${GITHUB_REPOSITORY#$GITHUB_REPOSITORY_OWNER/}" >> $GITHUB_OUTPUT
+    outputs:
+      site: https://${{ github.repository_owner }}.github.io
+      basepath: /${{ steps.extract.outputs.GITHUB_REPO_NAME }}

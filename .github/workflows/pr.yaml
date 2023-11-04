@@ -7,7 +7,14 @@ permissions:
   contents: read
 
 jobs:
+  prepare:
+    uses: ./.github/workflows/prepare.yaml
+
   build:
+    needs: prepare
     uses: ./.github/workflows/build.yaml
+    with:
+      site: ${{ needs.prepare.outputs.site }}
+      basepath:  ${{ needs.prepare.outputs.basepath }}/preview
 
   # TODO: deploy preview
