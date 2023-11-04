@@ -61,20 +61,20 @@ Their interest lies in the site's technical structure, content relevance, and ov
 
 ## Prioritization
 
-```
+```mermaid
 quadrantChart
     title Power & Interest Grid
-    x-axis Power
-    y-axis Interest
+    x-axis Interest
+    y-axis Power
 
-    quadrant-1 Monitor
+    quadrant-1 Monitor Closely
     quadrant-2 Keep Satisfied
-    quadrant-3 Keep Informed
-    quadrant-4 Monitor Closely
+    quadrant-3 Monitor
+    quadrant-4 Keep Informed
 
     Site Owner: [0.8, 0.8]
-    Visitor: [0.8, 0.2]
-    Professional Network: [0.6, 0.4]
-    Learners: [0.4, 0.6]
-    Search Engines: [0.4, 0.8]
+    Visitor: [0.2, 0.8]
+    Professional Network: [0.4, 0.6]
+    Learners: [0.6, 0.4]
+    Search Engines: [0.8, 0.4]
 ```
