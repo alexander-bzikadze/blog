@@ -1,18 +1,18 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from 'tailwindcss';
 
 export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
     fontFamily: {
-      sans: "Open Sans"
+      sans: 'Open Sans',
     },
     extend: {
       colors: {
-        freedom: "#3B5E68",
-        perfect: "#EAECD3",
-        love: "#FF496C",
-      }
+        freedom: '#3B5E68',
+        perfect: '#EAECD3',
+        love: '#FF496C',
+      },
     },
   },
   plugins: [],
-} satisfies Config
+} satisfies Config;
