@@ -1,4 +1,5 @@
 import type { AstroUserConfig, AstroIntegration } from 'astro'
+import type { MermaidConfig, RunOptions as MermaidRunOptions } from "mermaid"
 import svelte from '@astrojs/svelte'
 import { typescript } from 'svelte-preprocess'
 import tailwind from "@astrojs/tailwind"
@@ -47,6 +48,13 @@ const architectureSidebar: NonNullable<Parameters<typeof starlight>[0]['sidebar'
   ]
 }
 
+const mermaidConfig: MermaidConfig = { 
+  startOnLoad: false,
+}
+const mermaidRuntimeConfig: MermaidRunOptions = {
+  querySelector: ".mermaid"
+}
+
 /**
  * @description Include [Mermaid library](https://mermaid.js.org/config/usage.html) 
  *              on each page starlight page
@@ -56,8 +64,12 @@ const mermaidScriptLoad: NonNullable<Parameters<typeof starlight>[0]['head']>[0]
   tag: "script",
   attrs: {
     type: "module",
-    src: "https://cdn.jsdelivr.net/npm/mermaid@10.6.0/dist/mermaid.esm.min.mjs"
-  }
+  },
+  // TODO: move to a proper component
+  // TODO: fix dark theme and theme switching
+  content: `import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10.6.0/dist/mermaid.esm.min.mjs";` +
+    `mermaid.initialize({ ...${JSON.stringify(mermaidConfig)},darkMode});` +
+    `await mermaid.run(${JSON.stringify(mermaidRuntimeConfig)});`
 }
 
 const starlightIntegration: AstroIntegration = starlight({
