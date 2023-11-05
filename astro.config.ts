@@ -75,7 +75,7 @@ const mermaidScriptLoad: NonNullable<
   // TODO(#23): move to a proper component
   // TODO(#22): fix dark theme and theme switching
   content: `import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10.6.0/dist/mermaid.esm.min.mjs";` +
-    `mermaid.initialize({ ...${JSON.stringify(mermaidConfig)},darkMode});` +
+    `mermaid.initialize(${JSON.stringify(mermaidConfig)});` +
     `await mermaid.run(${JSON.stringify(mermaidRuntimeConfig)});`,
 };
 
