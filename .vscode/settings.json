@@ -1,6 +1,7 @@
 {
     "deno.enablePaths": [
         "./.polyfill",
+        "./scripts",
         "./deps.ts"
     ]
 }

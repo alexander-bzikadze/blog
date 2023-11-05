@@ -44,7 +44,11 @@ const architectureSidebar: NonNullable<
     { label: 'Architecture Description', link: '/architecture/' },
     {
       label: 'Stakeholders',
-      autogenerate: { directory: 'architecture/stakeholders/' },
+      autogenerate: { directory: '/architecture/stakeholders/' },
+    },
+    {
+      label: 'Concerns',
+      autogenerate: { directory: '/architecture/concerns/' },
     },
   ],
 };
