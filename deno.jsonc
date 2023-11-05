@@ -1,7 +1,8 @@
 {
   "tasks": {
     "install": "deno cache --node-modules-dir deps.ts",
-    "compile:architecture:prompt": "deno run --allow-read ./scripts/compile_architecture_prompt.ts"
+    "update:deno": "deno run --allow-read --allow-write --allow-net https://deno.land/x/udd/main.ts deps.ts",
+    "compile:architecture:prompt": "deno run --allow-read scripts/compile_architecture_prompt.ts"
   },
   "imports": {
     "path": "node:path",
