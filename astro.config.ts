@@ -1,5 +1,4 @@
 import type { AstroIntegration, AstroUserConfig } from 'astro';
-import type { MermaidConfig, RunOptions as MermaidRunOptions } from 'mermaid';
 import svelte from '@astrojs/svelte';
 import { typescript } from 'svelte-preprocess';
 import tailwind from '@astrojs/tailwind';
@@ -53,36 +52,13 @@ const architectureSidebar: NonNullable<
   ],
 };
 
-const mermaidConfig: MermaidConfig = {
-  startOnLoad: false,
-};
-const mermaidRuntimeConfig: MermaidRunOptions = {
-  querySelector: '.mermaid',
-};
-
-/**
- * @description Include [Mermaid library](https://mermaid.js.org/config/usage.html)
- *              on each page starlight page
- *              in order to render mermaid code blocks into diagrams.
- */
-const mermaidScriptLoad: NonNullable<
-  Parameters<typeof starlight>[0]['head']
->[0] = {
-  tag: 'script',
-  attrs: {
-    type: 'module',
-  },
-  // TODO(#23): move to a proper component
-  // TODO(#22): fix dark theme and theme switching
-  content: `import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10.6.0/dist/mermaid.esm.min.mjs";` +
-    `mermaid.initialize(${JSON.stringify(mermaidConfig)});` +
-    `await mermaid.run(${JSON.stringify(mermaidRuntimeConfig)});`,
-};
-
 const starlightIntegration: AstroIntegration = starlight({
   title: 'Alexander Bzikadze Personal Website',
   sidebar: [architectureSidebar],
-  head: [mermaidScriptLoad],
+  head: [],
+  components: {
+    Header: './src/lib/starlight/header/Header.astro',
+  },
 });
 
 export default {
