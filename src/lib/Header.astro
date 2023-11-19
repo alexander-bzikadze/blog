@@ -1,8 +1,14 @@
 ---
-const { class: className } = Astro.props;
+interface Props {
+  class: string;
+  title: string;
+}
 ---
-<div class:list={['bg-perfect bg-opacity-30 glass-morphism justify-start items-center gap-2 inline-flex', className]} >
-    <span class="text-center text-freedom text-4xl font-bold break-words">
-        Alexander Bzikadze
+<div class:list={[
+  'primary justify-start items-center gap-2 inline-flex',
+  Astro.props.class
+]} >
+    <span class="display-small on-primary-text text-center break-words">
+      {Astro.props.title}
     </span>
 </div>

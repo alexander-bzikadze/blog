@@ -19,8 +19,9 @@
     "svelte": "^4.2.1",
     "svelte-preprocess": "^5.0.4",
     "tailwindcss": "^3.3.3",
-    "@material/web": "^1.0.1",
     "unist-util-visit": "^5.0.0",
-    "@types/mdast": "^4.0.2"
+    "@types/mdast": "^4.0.2",
+    "@material/material-color-utilities": "^0.2.7",
+    "@material/web": "^1.0.1"
   }
 }

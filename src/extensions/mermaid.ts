@@ -7,7 +7,7 @@
  */
 import type { RemarkPlugin } from '@astrojs/markdown-remark';
 import type { Code, Html, Root } from 'mdast';
-import { CSS_CLASSNAME } from './mermaid_const';
+import { CSS_CLASSNAME } from './mermaid_const.ts';
 import { visit } from 'unist-util-visit';
 
 export default (() => (tree: Root) =>

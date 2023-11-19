@@ -1,6 +1,6 @@
 import type { MermaidConfig } from 'mermaid';
 import mermaid from 'mermaid';
-import { CSS_CLASSNAME } from '../../plugins/mermaid_const';
+import { CSS_CLASSNAME } from '../../extensions/mermaid_const';
 
 export interface ModeProvider {
   get isDark(): boolean;
