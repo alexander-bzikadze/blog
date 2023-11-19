@@ -3,8 +3,8 @@ name: Update Dependencies
 on:
   workflow_dispatch:
   schedule:
-      # [Every Saturday at 5am](https://crontab.guru/#0_5_*_*_6)
-    - cron: "0 5 * * 6"
+    # [Every Saturday at 5am](https://crontab.guru/#0_5_*_*_6)
+    - cron: '0 5 * * 6'
 
 jobs:
   deno:
@@ -21,7 +21,7 @@ jobs:
         uses: peter-evans/create-pull-request@v5
         id: pr
         with:
-          commit-message: "Update Deno dependencies"
+          commit-message: 'Update Deno dependencies'
           title: Update Deno dependencies
           body: >
             Dependencies updated by [udd](https://github.com/hayd/deno-udd).

@@ -16,47 +16,49 @@ permissions:
   contents: read
 
 jobs:
-  check:
+  node:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Setup Deno
-        uses: denoland/setup-deno@v1
+      - name: Install Node.js
+        uses: actions/setup-node@v4
         with:
-          deno-version: v1.37.2
-      - name: Fmt
-        run: deno fmt --check
-      - name: Lint
-        run: deno lint
-
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Setup Deno
-        uses: denoland/setup-deno@v1
+          node-version: '21.2.0'
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
         with:
-          deno-version: v1.37.2
+          version: '8.8.0'
+          run_install: false
 
-      - name: Restore node modules
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+      - name: Restore pnpm store
         uses: actions/cache/restore@v3
         with:
-          path: node_modules
-          key: ${{ runner.os }}-node-modules-${{ hashFiles('deno.lock') }}
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
-            ${{ runner.os }}-node-modules-
-      - name: Cache dependencies
-        run: deno task install
-      - name: Save node modules
-        uses: actions/cache/save@v3
+            ${{ runner.os }}-pnpm-store-
+      - name: Install dependencies
+        run: pnpm install
+      - name: Save pnpm store
+        uses: actions/cache@v3
         with:
-          path: node_modules
-          key: ${{ runner.os }}-node-modules-${{ hashFiles('deno.lock') }}
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Format
+        run: pnpm fmt:check
+      - name: Lint
+        run: pnpm lint:check
 
       - name: Build
-        run: deno task build
+        run: pnpm build
         env:
           ASTRO_SITE: ${{ inputs.site }}
           ASTRO_BASE_URL: ${{ inputs.basepath }}
@@ -66,3 +68,18 @@ jobs:
           name: build
           path: dist
           if-no-files-found: error
+
+  deno:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.37.2
+
+      - name: Format
+        run: deno fmt --check
+      - name: Lint
+        run: deno lint

@@ -15,6 +15,6 @@ jobs:
     uses: ./.github/workflows/build.yaml
     with:
       site: ${{ needs.prepare.outputs.site }}
-      basepath:  ${{ needs.prepare.outputs.basepath }}/preview
+      basepath: ${{ needs.prepare.outputs.basepath }}/preview
 
   # TODO: deploy preview

@@ -12,7 +12,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
+  group: 'pages'
   cancel-in-progress: false
 
 jobs:
@@ -24,7 +24,7 @@ jobs:
     uses: ./.github/workflows/build.yaml
     with:
       site: ${{ needs.prepare.outputs.site }}
-      basepath:  ${{ needs.prepare.outputs.basepath }}
+      basepath: ${{ needs.prepare.outputs.basepath }}
 
   deploy:
     needs: build

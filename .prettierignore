@@ -1,0 +1,17 @@
+# Generated
+.astro/
+dist/
+node_modules/
+
+# Mac Related
+.DS_Store
+
+# Pnpm-generated
+pnpm-lock.yaml
+
+# Deno-formatted
+scripts/
+deno.jsonc
+deno.lock
+deps.ts
+
