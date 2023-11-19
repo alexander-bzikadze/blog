@@ -55,6 +55,15 @@ jobs:
       - name: Format
         run: pnpm fmt:check
       - name: Lint
+        run: pnpm lint:report -o eslint-results.sarif
+        continue-on-error: true
+      - name: Upload lint analysis
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: eslint-results.sarif
+          wait-for-processing: true
+        # Rerun in order to fail if needed but allow previous analysis
+      - name: Lint
         run: pnpm lint:check
 
       - name: Build
