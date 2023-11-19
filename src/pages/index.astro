@@ -1,22 +1,32 @@
 ---
+import "../styles/material/theme.css"
 import Global from "../lib/Global.astro"
 import Header from "../lib/Header.astro"
-import Dialogue from "../lib/Dialogue.svelte"
+import Messages from "../lib/messages/Messages.svelte"
 import background from "../assets/Background.png"
 import speaker from "../assets/Speaker.png"
+
+const title = 'Alexander Bzikadze'
+const messages = [
+  "Hey!",
+  "My name is Alexander Bzikadze! I am a Software Engineering Manager, based in Tokyo. My professional interests cover Teams Management,  Technical Leadership and Organization Design. I am also a pianist, D&D Game Master and Georgian cuisine enthusiast.",
+  "It is a pleasure to welcome you!",
+  "What would you like to learn next?",
+]
 ---
 <html class="h-screen" lang="en">
 	<head>
 		<title>Blog</title>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<!-- 
+		<!--
 			Add [Material Icons](https://developers.google.com/fonts/docs/material_icons)
-			New icons can be [searched for](https://fonts.google.com/icons) 
+			New icons can be [searched for](https://fonts.google.com/icons)
 		-->
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<!-- Add [Open Sans font](https://fonts.google.com/specimen/Open+Sans) -->
-	  	<link href="https://fonts.googleapis.com/css?family=Open Sans" rel='stylesheet'>
+	  <link href="https://fonts.googleapis.com/css?family=Open Sans" rel='stylesheet'>
+    <script src="@material/web/fab/fab"/>
 
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
@@ -24,21 +34,24 @@ import speaker from "../assets/Speaker.png"
 
   	<body class="h-full flex flex-col justify-stretch bg-center bg-no-repeat backdrop-blur font-sans" style={`background-image: url(${background.src});`}>
 		<Global/>
-		<Header class="w-full"/>
+		<Header class="w-full" {title}/>
 		<main class="h-full">
 			<div class="h-full w-full flex justify-center">
-				<Dialogue class="h-full max-w-[90%] md:max-w-[50%]" client:only="svelte" messages={[
-					"Hey!",
-					"My name is Alexander Bzikadze! I am a Software Engineering Manager, based in Tokyo. My professional interests cover Teams Management,  Technical Leadership and Organization Design. I am also a pianist, D&D Game Master and Georgian cuisine enthusiast.",
-					"It is a pleasure to welcome you!",
-					"What would you like to learn next?",
-				// TODO: Find a proper way to ensure images urls are relative
-				]} speaker={'.' + speaker.src} navigations={[
-					{ text: 'Your Blog' }
-				]}
-				/>
+        <div class="py-2 h-full max-w-[90%] md:max-w-[50%]
+          flex flex-col justify-between items-center">
+          <Messages client:only="svelte" {messages}
+            speaker={'.' + speaker.src}/>
+          <md-fab size="large" variant="tertiary" label="Your Blog"
+            role="button" tabindex="0"
+            on:click={() => alert('Not Implemented')}
+            on:keyup={() => alert('Not Impelemnted')}>
+            <span slot="icon" class="material-icons on-tertiary-container-text"
+              aria-role="img" aria-label="send">
+              send
+            </span>
+          </md-fab>
+        </div>
 			</div>
 		</main>
   	</body>
 </html>
-

@@ -3,8 +3,8 @@ import svelte from '@astrojs/svelte';
 import { typescript } from 'svelte-preprocess';
 import tailwind from '@astrojs/tailwind';
 import starlight from '@astrojs/starlight';
-import mermaid from './src/plugins/mermaid';
-import './.polyfill/process';
+import mermaid from './src/extensions/mermaid.ts';
+import './.polyfill/process.ts';
 
 const base: string | undefined = process.env.ASTRO_BASE_URL;
 const site: string | undefined = process.env.ASTRO_SITE;
@@ -78,7 +78,7 @@ export default {
     svelteIntegration,
     tailwind({
       configFile: 'tailwind.config.ts',
-    }) as AstroIntegration,
+    }),
     starlightIntegration,
   ],
 } satisfies AstroUserConfig;

@@ -1,7 +1,9 @@
 {
     "deno.enablePaths": [
-        "./.polyfill",
-        "./scripts",
-        "./deps.ts"
+        ".polyfill",
+        "scripts",
+        "src/extensions",
+        "deps.ts",
+        "tailwind.config.ts",
     ]
 }
