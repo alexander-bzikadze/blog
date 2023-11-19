@@ -1,1 +1,1 @@
-export const CSS_CLASSNAME = 'mermaid';
+export const CSS_CLASSNAME = 'mermaid'

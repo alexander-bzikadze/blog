@@ -4,13 +4,13 @@ on:
   workflow_call:
     # TODO: preview
     outputs:
-      site: 
+      site:
         description: Github pages site
         value: ${{ jobs.prepare.outputs.site }}
       basepath:
         description: Github pages base path
         value: ${{ jobs.prepare.outputs.basepath }}
-    
+
 jobs:
   prepare:
     runs-on: ubuntu-latest

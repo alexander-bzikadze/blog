@@ -1,7 +1,7 @@
-dist/
+# Generated
 .astro/
+dist/
 node_modules/
 
+# Mac Related
 .DS_Store
-
-.out

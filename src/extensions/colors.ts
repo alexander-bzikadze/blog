@@ -1,3 +1,3 @@
 export function argbToRGB(color: number): string {
-  return '#' + ('000000' + (color & 0xFFFFFF).toString(16)).slice(-6);
+  return `#${`000000${(color & 0xffffff).toString(16)}`.slice(-6)}`
 }

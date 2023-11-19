@@ -1,26 +1,20 @@
-import type { AstroIntegration, AstroUserConfig } from 'astro';
-import svelte from '@astrojs/svelte';
-import { typescript } from 'svelte-preprocess';
-import tailwind from '@astrojs/tailwind';
-import starlight from '@astrojs/starlight';
-import mermaid from './src/extensions/mermaid.ts';
-import './.polyfill/process.ts';
+import type { AstroIntegration, AstroUserConfig } from 'astro'
+import svelte from '@astrojs/svelte'
+import { typescript } from 'svelte-preprocess'
+import tailwind from '@astrojs/tailwind'
+import starlight from '@astrojs/starlight'
+import mermaid from './src/extensions/mermaid.ts'
 
-const base: string | undefined = process.env.ASTRO_BASE_URL;
-const site: string | undefined = process.env.ASTRO_SITE;
+const base: string | undefined = process.env.ASTRO_BASE_URL
+const site: string | undefined = process.env.ASTRO_SITE
 
-/**
- * @description Excludes sharp as it is not possible to use with Deno at the moment.
- */
 const excludeSharpFix: AstroUserConfig['vite'] = {
   build: {
     rollupOptions: {
-      external: [
-        'sharp',
-      ],
+      external: [],
     },
   },
-};
+}
 
 const svelteIntegration: AstroIntegration = svelte({
   preprocess: [
@@ -29,15 +23,13 @@ const svelteIntegration: AstroIntegration = svelte({
       reportDiagnostics: true,
     }),
   ],
-});
+})
 
 /**
  * @description Sidebar navigation for architecture description, implemented with starlight.
  *              Required as currently starlight [does not support index pages](https://github.com/withastro/starlight/issues/370).
  */
-const architectureSidebar: NonNullable<
-  Parameters<typeof starlight>[0]['sidebar']
->[0] = {
+const architectureSidebar: NonNullable<Parameters<typeof starlight>[0]['sidebar']>[0] = {
   label: 'Architecture Description',
   items: [
     { label: 'Architecture Description', link: '/architecture/' },
@@ -50,7 +42,7 @@ const architectureSidebar: NonNullable<
       autogenerate: { directory: '/architecture/concerns/' },
     },
   ],
-};
+}
 
 const starlightIntegration: AstroIntegration = starlight({
   title: 'Alexander Bzikadze Personal Website',
@@ -59,7 +51,7 @@ const starlightIntegration: AstroIntegration = starlight({
   components: {
     Header: './src/lib/starlight/header/Header.astro',
   },
-});
+})
 
 export default {
   base,
@@ -81,4 +73,4 @@ export default {
     }),
     starlightIntegration,
   ],
-} satisfies AstroUserConfig;
+} satisfies AstroUserConfig

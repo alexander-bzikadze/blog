@@ -5,23 +5,69 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "fmt:fix": "prettier . -w",
+    "fmt:check": "prettier . -c",
+    "lint:fix": "eslint --fix src",
+    "lint:check": "eslint src"
   },
   "dependencies": {
     "mermaid": "^10.6.0"
   },
   "devDependencies": {
-    "astro": "^3.2.0",
+    "@astrojs/markdown-remark": "3.3.0",
+    "@astrojs/starlight": "^0.11.2",
     "@astrojs/svelte": "^4.0.3",
     "@astrojs/tailwind": "^5.0.2",
-    "@astrojs/starlight": "^0.11.2",
-    "@astrojs/markdown-remark": "3.3.0",
-    "svelte": "^4.2.1",
+    "@material/material-color-utilities": "^0.2.7",
+    "@material/web": "^1.0.1",
+    "@tsconfig/strictest": "^2.0.2",
+    "@types/mdast": "^4.0.2",
+    "@typescript-eslint/eslint-plugin": "^6.11.0",
+    "@typescript-eslint/parser": "^6.11.0",
+    "astro": "^3.2.0",
+    "astro-eslint-parser": "^0.16.0",
+    "eslint": "^8.54.0",
+    "eslint-plugin-astro": "^0.29.1",
+    "eslint-plugin-svelte": "^2.35.0",
+    "eslint-plugin-tailwindcss": "^3.13.0",
+    "globals": "^13.23.0",
+    "prettier": "^3.1.0",
+    "prettier-plugin-astro": "^0.12.2",
+    "prettier-plugin-svelte": "^3.1.0",
+    "prettier-plugin-tailwindcss": "^0.5.7",
+    "svelte": "^4.2.5",
+    "svelte-eslint-parser": "^0.33.1",
     "svelte-preprocess": "^5.0.4",
     "tailwindcss": "^3.3.3",
-    "unist-util-visit": "^5.0.0",
-    "@types/mdast": "^4.0.2",
-    "@material/material-color-utilities": "^0.2.7",
-    "@material/web": "^1.0.1"
+    "unist-util-visit": "^5.0.0"
+  },
+  "prettier": {
+    "printWidth": 120,
+    "semi": false,
+    "singleQuote": true,
+    "bracketSameLine": true,
+    "arrowParens": "avoid",
+    "plugins": [
+      "prettier-plugin-astro",
+      "prettier-plugin-svelte",
+      "prettier-plugin-tailwindcss"
+    ],
+    "overrides": [
+      {
+        "files": "*.svelte",
+        "options": {
+          "parser": "svelte",
+          "svelteStrictMode": true
+        }
+      },
+      {
+        "files": "*.astro",
+        "options": {
+          "parser": "astro",
+          "astroAllowShorthand": true
+        }
+      }
+    ]
   }
 }

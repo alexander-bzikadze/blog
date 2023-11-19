@@ -1,6 +1,5 @@
-import * as mcu from "@material/material-color-utilities"
-import { MaterialTypeface, MaterialTypescale, MaterialColors } from "./src/extensions/material.ts"
-
+import * as mcu from '@material/material-color-utilities'
+import { MaterialTypeface, MaterialTypescale, MaterialColors } from './src/extensions/material.ts'
 
 export const colors: Record<string, [number, number, number]> = {
   freedom: [59, 94, 104],
@@ -14,9 +13,7 @@ export const coreColors: mcu.CorePaletteColors = {
 }
 export const materialColors = new MaterialColors(coreColors)
 
-
 export const materialTypeface = new MaterialTypeface('Open Sans', 'system-ui')
-
 
 export const materialTypescale = new MaterialTypescale({
   display: {
@@ -40,7 +37,7 @@ export const materialTypescale = new MaterialTypescale({
       fontSize: '2.25rem',
       lineHeight: '2.75rem',
       letterSpacing: '0rem',
-    }
+    },
   },
   headline: {
     large: {
@@ -63,7 +60,7 @@ export const materialTypescale = new MaterialTypescale({
       fontSize: '1.5rem',
       lineHeight: '2rem',
       letterSpacing: '0rem',
-    }
+    },
   },
   body: {
     large: {
@@ -86,7 +83,7 @@ export const materialTypescale = new MaterialTypescale({
       fontSize: '0.875rem',
       lineHeight: '1.125rem',
       letterSpacing: '0.025rem',
-    }
+    },
   },
   label: {
     large: {
@@ -109,7 +106,7 @@ export const materialTypescale = new MaterialTypescale({
       fontSize: '0.75rem',
       lineHeight: '1rem',
       letterSpacing: '0.025rem',
-    }
+    },
   },
   title: {
     large: {
@@ -132,6 +129,6 @@ export const materialTypescale = new MaterialTypescale({
       fontSize: '1rem',
       lineHeight: '1.375rem',
       letterSpacing: '0.006rem',
-    }
-  }
+    },
+  },
 })

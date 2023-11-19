@@ -2,7 +2,8 @@
   export let message: string
 </script>
 
-<p class="primary-container on-primary-container-text
-  p-1 w-fit rounded {$$props.class ?? ''}">
+<p
+  class="primary-container on-primary-container-text
+    w-fit rounded p-1 {$$props.class ?? ''}">
   {message}
 </p>
