@@ -9,7 +9,8 @@
     "fmt:fix": "prettier . -w",
     "fmt:check": "prettier . -c",
     "lint:fix": "eslint --fix src",
-    "lint:check": "eslint src"
+    "lint:check": "eslint src",
+    "lint:report": "eslint src -f \"@microsoft/eslint-formatter-sarif\""
   },
   "dependencies": {
     "mermaid": "^10.6.0"
@@ -21,6 +22,7 @@
     "@astrojs/tailwind": "^5.0.2",
     "@material/material-color-utilities": "^0.2.7",
     "@material/web": "^1.0.1",
+    "@microsoft/eslint-formatter-sarif": "^3.0.0",
     "@tsconfig/strictest": "^2.0.2",
     "@types/mdast": "^4.0.2",
     "@typescript-eslint/eslint-plugin": "^6.11.0",

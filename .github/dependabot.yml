@@ -6,16 +6,16 @@ updates:
     directory: '/'
     schedule:
       interval: 'weekly'
-      day: Saturday
+      day: saturday
       time: '05:00'
       # Japan Standard Time (UTC +09:00)
       timezone: 'Asia/Tokyo'
     commit-message: Update Github Actions
-  - package-ecosystem: 'node'
+  - package-ecosystem: 'npm'
     directory: '/'
     schedule:
       interval: 'weekly'
-      day: Saturday
+      day: saturday
       time: '05:00'
       # Japan Standard Time (UTC +09:00)
       timezone: 'Asia/Tokyo'
