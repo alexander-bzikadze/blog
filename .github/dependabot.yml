@@ -10,7 +10,9 @@ updates:
       time: '05:00'
       # Japan Standard Time (UTC +09:00)
       timezone: 'Asia/Tokyo'
-    commit-message: Update Github Actions
+    commit-message:
+      prefix: 'Update Github Actions'
+      include: scope
   - package-ecosystem: 'npm'
     directory: '/'
     schedule:
@@ -19,4 +21,7 @@ updates:
       time: '05:00'
       # Japan Standard Time (UTC +09:00)
       timezone: 'Asia/Tokyo'
-    commit-message: Update pnpm dependencies
+    commit-message:
+      prefix: Update pnpm dependencies
+      prefix-development: Update pnpm dev dependencies
+      include: scope
