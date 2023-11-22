@@ -4,6 +4,6 @@
 
 <p
   class="primary-container on-primary-container-text
-    w-fit rounded p-1 {$$props.class ?? ''}">
+    w-fit rounded p-1 {$$props['class'] ?? ''}">
   {message}
 </p>

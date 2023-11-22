@@ -23,6 +23,7 @@
     "@material/material-color-utilities": "^0.2.7",
     "@material/web": "^1.0.1",
     "@microsoft/eslint-formatter-sarif": "^3.0.0",
+    "@prettier/plugin-xml": "^3.2.2",
     "@tsconfig/strictest": "^2.0.2",
     "@types/mdast": "^4.0.2",
     "@typescript-eslint/eslint-plugin": "^6.11.0",
@@ -38,6 +39,7 @@
     "prettier-plugin-astro": "^0.12.2",
     "prettier-plugin-svelte": "^3.1.0",
     "prettier-plugin-tailwindcss": "^0.5.7",
+    "sharp": "^0.32.6",
     "svelte": "^4.2.5",
     "svelte-eslint-parser": "^0.33.1",
     "svelte-preprocess": "^5.0.4",
@@ -53,7 +55,8 @@
     "plugins": [
       "prettier-plugin-astro",
       "prettier-plugin-svelte",
-      "prettier-plugin-tailwindcss"
+      "prettier-plugin-tailwindcss",
+      "@prettier/plugin-xml"
     ],
     "overrides": [
       {
@@ -68,6 +71,14 @@
         "options": {
           "parser": "astro",
           "astroAllowShorthand": true
+        }
+      },
+      {
+        "files": "*.svg",
+        "options": {
+          "parser": "xml",
+          "xmlQuoteAttributes": "single",
+          "xmlWhitespaceSensitivity": "strict"
         }
       }
     ]
