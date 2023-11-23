@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+deno fmt
+pnpm run fmt:fix
+
+deno lint
+pnpm run lint:fix
