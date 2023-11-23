@@ -1,5 +1,5 @@
 {
-  "deno.enablePaths": [".polyfill", "scripts", "src/extensions", "deps.ts", "tailwind.config.ts"],
+  "deno.enablePaths": ["scripts", "deps.ts"],
   "eslint.experimental.useFlatConfig": true,
   "eslint.format.enable": false,
   "svelte.enable-ts-plugin": true

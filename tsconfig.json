@@ -2,6 +2,9 @@
   "extends": "@tsconfig/strictest/tsconfig.json",
   "include": ["src/**/*"],
   "compilerOptions": {
-    "lib": ["DOM", "ES2023"]
+    "target": "ES2022",
+    "downlevelIteration": true,
+    "lib": ["DOM", "ES2023"],
+    "allowImportingTsExtensions": true
   }
 }
