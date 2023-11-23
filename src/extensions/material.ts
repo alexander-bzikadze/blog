@@ -3,6 +3,8 @@ import * as mcu from '@material/material-color-utilities'
 import { kebabize } from './kebabize.ts'
 import { argbToRGB } from './colors.ts'
 
+type TailwindConfigThemeConfig = NonNullable<TailwindConfig['theme']>
+
 const COLOR_TONES = [0, 10, 20, 25, 30, 35, 40, 50, 60, 70, 80, 90, 95, 98, 99, 100]
 
 export class MaterialColors {
@@ -48,7 +50,7 @@ export class MaterialColors {
 
     this.schemeIter.forEach(([schemename, scheme]) => {
       Object.entries(scheme.toJSON()).forEach(([colorname, color]) => {
-        schemeFM(schemename, colorname, argbToRGB(color))
+        schemeFM(schemename, colorname, argbToRGB(color as number))
       })
     })
   }
@@ -68,18 +70,29 @@ export class MaterialColors {
     return result
   }
 
-  public toTailwind(theme: TailwindConfig['theme']): TailwindConfig['theme'] {
-    theme.colors = theme.colors ?? {}
+  public toTailwind(theme: TailwindConfigThemeConfig): TailwindConfigThemeConfig {
+    const colors: Record<string, string> = {}
 
     this.to(
       (colorname, tone, color) => {
-        theme.colors[`${colorname}-${tone}`] = color
+        colors[`${colorname}-${tone}`] = color
       },
       (schemename, colorname, color) => {
-        theme.colors[`${kebabize(colorname)}-${schemename}`] = color
+        colors[`${kebabize(colorname)}-${schemename}`] = color
       },
     )
 
+    theme.colors = { ...theme.colors, ...colors }
+    return theme
+  }
+
+  public toStarlight(theme: TailwindConfigThemeConfig): TailwindConfigThemeConfig {
+    const accent = Object.fromEntries(
+      COLOR_TONES.map(tone => [(100 - tone) * 10, argbToRGB(this.palette.a1.tone(tone))]),
+    )
+    const gray = Object.fromEntries(COLOR_TONES.map(tone => [(100 - tone) * 10, argbToRGB(this.palette.n1.tone(tone))]))
+
+    theme.colors = { ...theme.colors, accent, gray }
     return theme
   }
 }
@@ -94,10 +107,13 @@ export class MaterialTypeface {
     return [`--md-ref-typeface-brand: '${this.brand}'`, `--md-ref-typeface-plain: '${this.plain}'`]
   }
 
-  public toTailwind(theme: TailwindConfig['theme']): TailwindConfig['theme'] {
-    theme.fontFamily = theme.fontFamily ?? {}
-    theme.fontFamily.brand = this.brand
-    theme.fontFamily.plain = this.plain
+  public toTailwind(theme: TailwindConfigThemeConfig): TailwindConfigThemeConfig {
+    const fontFamily: Record<string, string> = {}
+
+    fontFamily['brand'] = this.brand
+    fontFamily['plain'] = this.plain
+
+    theme.fontFamily = { ...theme.fontFamily, ...fontFamily }
     return theme
   }
 }
@@ -167,21 +183,27 @@ export class MaterialTypescale {
     return result
   }
 
-  public toTailwind(theme: TailwindConfig['theme']): TailwindConfig['theme'] {
-    theme.fontFamily = theme.fontFamily ?? {}
-    theme.fontWeight = theme.fontWeight ?? {}
-    theme.fontSize = theme.fontSize ?? {}
-    theme.lineHeight = theme.lineHeight ?? {}
-    theme.letterSpacing = theme.letterSpacing ?? {}
+  public toTailwind(theme: TailwindConfigThemeConfig): TailwindConfigThemeConfig {
+    const fontFamily: Record<string, string> = {}
+    const fontWeight: Record<string, string> = {}
+    const fontSize: Record<string, string> = {}
+    const lineHeight: Record<string, string> = {}
+    const letterSpacing: Record<string, string> = {}
 
     this.to((rolename, stylename, style) => {
       const name = `${rolename}-${stylename}`
-      theme.fontFamily[name] = style.font
-      theme.fontWeight[name] = style.weight.toString()
-      theme.fontSize[name] = style.fontSize
-      theme.lineHeight[name] = style.lineHeight
-      theme.letterSpacing[name] = style.letterSpacing
+      fontFamily[name] = style.font
+      fontWeight[name] = style.weight.toString()
+      fontSize[name] = style.fontSize
+      lineHeight[name] = style.lineHeight
+      letterSpacing[name] = style.letterSpacing
     })
+
+    theme.fontFamily = { ...theme.fontFamily, ...fontFamily }
+    theme.fontWeight = { ...theme.fontWeight, ...fontWeight }
+    theme.fontSize = { ...theme.fontSize, ...fontSize }
+    theme.lineHeight = { ...theme.lineHeight, ...lineHeight }
+    theme.letterSpacing = { ...theme.letterSpacing, ...letterSpacing }
 
     return theme
   }
