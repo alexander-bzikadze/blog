@@ -5,8 +5,8 @@ interface Props {
 }
 ---
 
-<div class:list={['primary inline-flex items-center justify-start gap-2', Astro.props.class]}>
-  <span class="display-small on-primary-text break-words text-center">
+<div class:list={['inline-flex items-center justify-start gap-2 primary', Astro.props.class]}>
+  <span class="break-words text-center on-primary-text display-small">
     {Astro.props.title}
   </span>
 </div>
