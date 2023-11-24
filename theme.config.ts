@@ -1,5 +1,5 @@
 import * as mcu from '@material/material-color-utilities'
-import { MaterialTypeface, MaterialTypescale, MaterialColors } from './src/extensions/material.ts'
+import { MaterialTypeface, MaterialTypescale } from './src/extensions/material/theme.ts'
 
 export const colors: Record<string, [number, number, number]> = {
   freedom: [59, 94, 104],
@@ -11,11 +11,13 @@ export const coreColors: mcu.CorePaletteColors = {
   secondary: mcu.argbFromRgb(...colors.perfect),
   tertiary: mcu.argbFromRgb(...colors.love),
 }
-export const materialColors = new MaterialColors(coreColors)
 
-export const materialTypeface = new MaterialTypeface('Open Sans', 'system-ui')
+export const materialTypeface: MaterialTypeface = {
+  brand: 'Open Sans',
+  plain: 'system-ui',
+}
 
-export const materialTypescale = new MaterialTypescale({
+export const materialTypescale: MaterialTypescale = {
   display: {
     large: {
       font: materialTypeface.brand,
@@ -131,4 +133,4 @@ export const materialTypescale = new MaterialTypescale({
       letterSpacing: '0.006rem',
     },
   },
-})
+}

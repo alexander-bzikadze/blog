@@ -1,14 +1,12 @@
 import type { MermaidConfig } from 'mermaid'
 import mermaid from 'mermaid'
-import { CSS_CLASSNAME } from '../../extensions/mermaid_const'
+import { CSS_CLASSNAME } from '../../extensions/mermaid_const.ts'
 
 export interface ModeProvider {
   get isDark(): boolean
 }
 
 export class MermaidFacade {
-  private readonly decoder = new TextDecoder()
-
   constructor(private readonly modeProvider: ModeProvider) {
     mermaid.initialize(this.config)
   }
@@ -30,13 +28,13 @@ export class MermaidFacade {
       code = element.innerHTML,
       { svg, bindFunctions } = await mermaid.render(id, code, element)
     element.innerHTML = svg
-    bindFunctions(element)
+    bindFunctions?.(element)
 
     element.setAttribute('code', code)
   }
 
   private async rerender(element: Element): Promise<void> {
-    const { id } = element.children.item(0)
+    const { id } = element.children.item(0) ?? {}
     if (id === undefined) {
       return
     }
@@ -48,7 +46,7 @@ export class MermaidFacade {
 
     const { svg, bindFunctions } = await mermaid.render(id, code, element)
     element.innerHTML = svg
-    bindFunctions(element)
+    bindFunctions?.(element)
   }
 
   private static readonly BASE_CONFIG: MermaidConfig = Object.freeze({

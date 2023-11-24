@@ -3,7 +3,7 @@
 </script>
 
 <p
-  class="primary-container on-primary-container-text
-    w-fit rounded p-1 {$$props['class'] ?? ''}">
+  class="w-fit rounded
+    p-1 primary-container on-primary-container-text {$$props['class'] ?? ''}">
   {message}
 </p>

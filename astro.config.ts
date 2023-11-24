@@ -48,7 +48,6 @@ const starlightIntegration: AstroIntegration = starlight({
   title: 'Alexander Bzikadze Personal Website',
   sidebar: [architectureSidebar],
   head: [],
-  customCss: ['./src/styles/tailwind.css'],
   components: {
     Header: './src/lib/starlight/header/Header.astro',
   },
