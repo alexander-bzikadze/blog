@@ -16,9 +16,6 @@ devDependencies:
   '@astrojs/starlight':
     specifier: ^0.12.1
     version: 0.12.1(astro@3.5.5)
-  '@astrojs/starlight-tailwind':
-    specifier: ^2.0.1
-    version: 2.0.1(@astrojs/starlight@0.12.1)(@astrojs/tailwind@5.0.2)(tailwindcss@3.3.5)
   '@astrojs/svelte':
     specifier: ^4.0.3
     version: 4.0.4(astro@3.5.5)(svelte@4.2.5)(typescript@5.2.2)(vite@4.5.0)
@@ -198,18 +195,6 @@ packages:
     dependencies:
       sitemap: 7.1.1
       zod: 3.22.4
-    dev: true
-
-  /@astrojs/starlight-tailwind@2.0.1(@astrojs/starlight@0.12.1)(@astrojs/tailwind@5.0.2)(tailwindcss@3.3.5):
-    resolution: {integrity: sha512-niMgFcR7NHcsBVy8UAN3F2gqhmoN5v83st5Hu4YzvUL+6SNwjQmIipXppXdN9+iVneRjPr6PLGzDfI+wnjSBWQ==}
-    peerDependencies:
-      '@astrojs/starlight': '>=0.9.0'
-      '@astrojs/tailwind': ^5.0.0
-      tailwindcss: ^3.3.3
-    dependencies:
-      '@astrojs/starlight': 0.12.1(astro@3.5.5)
-      '@astrojs/tailwind': 5.0.2(astro@3.5.5)(tailwindcss@3.3.5)
-      tailwindcss: 3.3.5
     dev: true
 
   /@astrojs/starlight@0.12.1(astro@3.5.5):
