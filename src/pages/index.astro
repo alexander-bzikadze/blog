@@ -1,10 +1,16 @@
 ---
-import { Image } from 'astro:assets'
+import { Image, getImage } from 'astro:assets'
 import Global from '../lib/Global.astro'
 import Header from '../lib/Header.astro'
 import Messages from '../lib/messages/Messages.svelte'
 import background from '../assets/Background.png'
+import darkBackground from '../assets/Background-dark.png'
 import speaker from '../assets/Speaker.png'
+
+const bg = {
+  light: `url("${(await getImage({ src: background })).src}")`,
+  dark: `url("${(await getImage({ src: darkBackground })).src}")`,
+}
 
 const base = import.meta.env.BASE_URL
 const title = 'Alexander Bzikadze'
@@ -32,11 +38,27 @@ const messages = [
 
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+
+    <style define:vars={{ lightBackground: bg.light, darkBackground: bg.dark }}>
+      body {
+        background-image: var(--lightBackground);
+      }
+
+      @media (prefers-color-scheme: light) {
+        body {
+          background-image: var(--lightBackground);
+        }
+      }
+
+      @media (prefers-color-scheme: dark) {
+        body {
+          background-image: var(--darkBackground);
+        }
+      }
+    </style>
   </head>
 
-  <body
-    class="font-sans flex h-full flex-col justify-stretch bg-center bg-no-repeat backdrop-blur"
-    style={`background-image: url(${background.src});`}>
+  <body class="font-sans flex h-full flex-col justify-stretch bg-center bg-no-repeat backdrop-blur">
     <Global />
     <Header class="w-full" {title} />
     <main class="h-full">
