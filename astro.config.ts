@@ -36,10 +36,17 @@ const architectureSidebar: NonNullable<Parameters<typeof starlight>[0]['sidebar'
     {
       label: 'Stakeholders',
       autogenerate: { directory: '/architecture/stakeholders/' },
+      collapsed: true,
     },
     {
       label: 'Concerns',
       autogenerate: { directory: '/architecture/concerns/' },
+      collapsed: true,
+    },
+    {
+      label: 'Architecture Decision Records',
+      autogenerate: { directory: '/architecture/decisions/' },
+      collapsed: true,
     },
   ],
 }
