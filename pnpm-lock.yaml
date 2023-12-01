@@ -92,8 +92,8 @@ devDependencies:
     specifier: ^0.33.1
     version: 0.33.1(svelte@4.2.5)
   svelte-preprocess:
-    specifier: ^5.0.4
-    version: 5.1.0(@babel/core@7.23.3)(postcss@8.4.31)(svelte@4.2.5)(typescript@5.2.2)
+    specifier: ^5.1.1
+    version: 5.1.1(@babel/core@7.23.3)(postcss@8.4.31)(svelte@4.2.5)(typescript@5.2.2)
   tailwindcss:
     specifier: ^3.3.3
     version: 3.3.5
@@ -6112,8 +6112,8 @@ packages:
       svelte: 4.2.5
     dev: true
 
-  /svelte-preprocess@5.1.0(@babel/core@7.23.3)(postcss@8.4.31)(svelte@4.2.5)(typescript@5.2.2):
-    resolution: {integrity: sha512-EkErPiDzHAc0k2MF5m6vBNmRUh338h2myhinUw/xaqsLs7/ZvsgREiLGj03VrSzbY/TB5ZXgBOsKraFee5yceA==}
+  /svelte-preprocess@5.1.1(@babel/core@7.23.3)(postcss@8.4.31)(svelte@4.2.5)(typescript@5.2.2):
+    resolution: {integrity: sha512-p/Dp4hmrBW5mrCCq29lEMFpIJT2FZsRlouxEc5qpbOmXRbaFs7clLs8oKPwD3xCFyZfv1bIhvOzpQkhMEVQdMw==}
     engines: {node: '>= 14.10.0'}
     requiresBuild: true
     peerDependencies:
