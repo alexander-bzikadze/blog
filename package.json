@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "@astrojs/markdown-remark": "3.5.0",
-    "@astrojs/starlight": "^0.13.0",
+    "@astrojs/starlight": "^0.14.0",
     "@astrojs/svelte": "^4.0.3",
     "@astrojs/tailwind": "^5.0.2",
     "@material/material-color-utilities": "^0.2.7",

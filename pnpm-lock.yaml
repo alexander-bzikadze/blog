@@ -14,8 +14,8 @@ devDependencies:
     specifier: 3.5.0
     version: 3.5.0(astro@3.6.4)
   '@astrojs/starlight':
-    specifier: ^0.13.0
-    version: 0.13.0(astro@3.6.4)
+    specifier: ^0.14.0
+    version: 0.14.0(astro@3.6.4)
   '@astrojs/svelte':
     specifier: ^4.0.3
     version: 4.0.4(astro@3.6.4)(svelte@4.2.5)(typescript@5.2.2)(vite@4.5.0)
@@ -197,8 +197,8 @@ packages:
       zod: 3.22.4
     dev: true
 
-  /@astrojs/starlight@0.13.0(astro@3.6.4):
-    resolution: {integrity: sha512-3SVWGP9Qze3UkM5Wozpx+5v9dh75ZFPSHRqzeuXNtctn5nHjlzvOgIIQnuyyNhIEQMfml1lo83jL3Vsf7Qk7Iw==}
+  /@astrojs/starlight@0.14.0(astro@3.6.4):
+    resolution: {integrity: sha512-wrve52CIIymvntjf2QCfCFpYrmZTyD1qObkvLImeGDVAAyNdUnNlj6MU6SkqQg2fQkJcX9Kh4zkwepm79zYveQ==}
     peerDependencies:
       astro: ^3.2.0
     dependencies:
