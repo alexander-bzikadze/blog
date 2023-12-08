@@ -20,7 +20,7 @@
     "@astrojs/markdown-remark": "3.5.0",
     "@astrojs/starlight": "^0.13.0",
     "@astrojs/svelte": "^4.0.3",
-    "@astrojs/tailwind": "^5.0.2",
+    "@astrojs/tailwind": "^5.0.3",
     "@material/material-color-utilities": "^0.2.7",
     "@material/web": "^1.0.1",
     "@microsoft/eslint-formatter-sarif": "^3.0.0",
