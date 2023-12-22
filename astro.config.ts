@@ -1,6 +1,6 @@
 import type { AstroIntegration, AstroUserConfig } from 'astro'
 import svelte from '@astrojs/svelte'
-import { typescript } from 'svelte-preprocess'
+import sveltepreprocess from 'svelte-preprocess'
 import tailwind from '@astrojs/tailwind'
 import starlight from '@astrojs/starlight'
 import mermaid from './src/extensions/mermaid.ts'
@@ -18,7 +18,7 @@ const excludeSharpFix: AstroUserConfig['vite'] = {
 
 const svelteIntegration: AstroIntegration = svelte({
   preprocess: [
-    typescript({
+    sveltepreprocess({
       tsconfigFile: true,
       reportDiagnostics: true,
     }),
@@ -80,4 +80,7 @@ export default {
     }),
     starlightIntegration,
   ],
+  devToolbar: {
+    enabled: false,
+  },
 } satisfies AstroUserConfig

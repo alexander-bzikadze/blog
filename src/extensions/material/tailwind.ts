@@ -117,10 +117,12 @@ function colorUtilities(scheme: Scheme) {
   return Object.entries(scheme.toJSON())
     .map(([colorname]) => ({
       [`.${kebabize(colorname)}`]: {
-        'background-color': `var(--md-sys-color-${kebabize(colorname)})`,
+        '--tw-bg-opacity': '1',
+        'background-color': `rgb(var(--md-sys-color-${kebabize(colorname)}), var(--tw-bg-opacity))`,
       },
       [`.${kebabize(colorname)}-text`]: {
-        color: `var(--md-sys-color-${kebabize(colorname)})`,
+        '--tw-bg-opacity': '1',
+        color: `rgb(var(--md-sys-color-${kebabize(colorname)}), var(--tw-bg-opacity))`,
       },
     }))
     .reduce((pr, cu) => ({ ...pr, ...cu }), {})

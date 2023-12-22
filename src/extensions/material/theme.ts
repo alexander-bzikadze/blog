@@ -24,3 +24,6 @@ export type MaterialTypescale = {
   readonly body: MaterialRole
   readonly label: MaterialRole
 }
+
+// light -> 40, 100, 90, 10
+// dark -> 80, 20, 30, 90

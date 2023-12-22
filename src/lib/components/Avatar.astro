@@ -1,0 +1,17 @@
+---
+import type { ImageMetadata } from 'astro'
+import { Image } from 'astro:assets'
+import styles from './styles'
+
+interface Props {
+  src: ImageMetadata
+  alt: string
+
+  style: 'primary' | 'secondary' | 'tertiary'
+  class: string | undefined
+}
+
+const { src, alt, style, class: className } = Astro.props
+---
+
+<Image {src} {alt} class:list={[styles.colors[style].base, 'rounded-full', className ?? '']} />
