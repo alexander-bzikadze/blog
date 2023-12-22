@@ -1,87 +1,42 @@
 ---
-import { Image, getImage } from 'astro:assets'
-import Global from '../lib/Global.astro'
+import Landing from '../layout/Landing.astro'
 import Header from '../lib/Header.astro'
-import Messages from '../lib/messages/Messages.svelte'
-import background from '../assets/Background.png'
-import darkBackground from '../assets/Background-dark.png'
+import Chat from '../lib/components/chat/Chat.svelte'
+import Response from '../lib/components/chat/Response.svelte'
+import Dialogue from '../lib/components/chat/Dialogue.svelte'
+import Line from '../lib/components/chat/Line.svelte'
+import Message from '../lib/components/chat/Message.svelte'
+import Avatar from '../lib/components/Avatar.astro'
+import Navigation from '../lib/components/Navigation.svelte'
 import speaker from '../assets/Speaker.png'
 
-const bg = {
-  light: `url("${(await getImage({ src: background })).src}")`,
-  dark: `url("${(await getImage({ src: darkBackground })).src}")`,
-}
-
-const base = import.meta.env.BASE_URL
 const title = 'Alexander Bzikadze'
-const messages = [
-  'Hey!',
-  'My name is Alexander Bzikadze! I am a Software Engineering Manager, based in Tokyo. My professional interests cover Teams Management,  Technical Leadership and Organization Design. I am also a pianist, D&D Game Master and Georgian cuisine enthusiast.',
-  'It is a pleasure to welcome you!',
-  'What would you like to learn next?',
-]
 ---
 
-<html class="h-screen" lang="en">
-  <head>
-    <title>Blog</title>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href=`${base}favicon.svg` />
-    <!--
-			Add [Material Icons](https://developers.google.com/fonts/docs/material_icons)
-			New icons can be [searched for](https://fonts.google.com/icons)
-		-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <!-- Add [Open Sans font](https://fonts.google.com/specimen/Open+Sans) -->
-    <link href="https://fonts.googleapis.com/css?family=Open Sans" rel="stylesheet" />
-    <script src="@material/web/fab/fab"></script>
-
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-
-    <style define:vars={{ lightBackground: bg.light, darkBackground: bg.dark }}>
-      body {
-        background-image: var(--lightBackground);
-      }
-
-      @media (prefers-color-scheme: light) {
-        body {
-          background-image: var(--lightBackground);
-        }
-      }
-
-      @media (prefers-color-scheme: dark) {
-        body {
-          background-image: var(--darkBackground);
-        }
-      }
-    </style>
-  </head>
-
-  <body class="font-sans flex h-full flex-col justify-stretch bg-center bg-no-repeat backdrop-blur">
-    <Global />
+<Landing>
+  <div class="flex h-full flex-col justify-stretch">
     <Header class="w-full" {title} />
     <main class="h-full">
-      <div class="flex h-full w-full justify-center">
-        <div class="flex h-full max-w-[90%] flex-col
-          items-center justify-between py-2 md:max-w-[50%]">
-          <Messages client:only="svelte" {messages}>
-            <Image slot="icon" src={speaker} alt="Speaker deliveres welcoming speech" />
-          </Messages>
-          <md-fab
-            size="large"
-            variant="tertiary"
-            label="Your Blog"
-            role="button"
-            tabindex="0"
-            on:click={() => alert('Not Implemented')}
-            on:keyup={() => alert('Not Impelemnted')}>
-            <span slot="icon" class="material-icons on-tertiary-container-text" aria-role="img" aria-label="send">
-              send
-            </span>
-          </md-fab>
-        </div>
-      </div>
+      <Chat class="h-full p-5">
+        <Dialogue slot="dialogue" class="mx-auto w-full max-w-[30rem]">
+          <Line sender="addressee">
+            <Avatar slot="avatar" style="primary" src={speaker} alt="Adressee" class="h-12 w-12" />
+            <Message message="Hey!" style="primary" />
+            <Message message="My name is Alexander Bzikadze!" style="primary" />
+            <Message message="I am a Software Engineering Manager, based in Tokyo." style="primary" />
+            <Message
+              message="My professional interests cover Teams Management,  Technical Leadership and Organization Design."
+              style="primary"
+            />
+            <Message message="I am also a pianist, D&D Game Master and Georgian cuisine enthusiast." style="primary" />
+            <Message message="It is a pleasure to welcome you!" style="primary" />
+            <Message message="What would you like to learn next?" style="primary" />
+          </Line>
+        </Dialogue>
+        <Response slot="response">
+          <Navigation style="tertiary" label="Your Portfolio" href="./portfolio/" icon="send" />
+        </Response>
+      </Chat>
     </main>
-  </body>
-</html>
+  </div>
+</Landing>

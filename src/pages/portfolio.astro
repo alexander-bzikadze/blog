@@ -1,0 +1,46 @@
+---
+import { Image } from 'astro:assets'
+import Landing from '../layout/Landing.astro'
+import Header from '../lib/Header.astro'
+import Avatar from '../lib/components/Avatar.astro'
+import speaker from '../assets/Speaker.png'
+import Dialogue from '../lib/components/chat/Dialogue.svelte'
+import Line from '../lib/components/chat/Line.svelte'
+import Message from '../lib/components/chat/Message.svelte'
+import Chat from '../lib/components/chat/Chat.svelte'
+import favicon from '../../public/favicon.svg'
+import styles from '../lib/components/styles'
+
+const title = 'Alexander Bzikadze'
+---
+
+<Landing>
+  <div class="flex
+    h-full flex-col">
+    <Header {title} />
+    <main class="h-full">
+      <Chat class="h-full p-5">
+        <Dialogue slot="dialogue" class="mx-auto w-full max-w-[30rem]">
+          <Line sender="addresser">
+            <Message message="Your Portfolio" style="tertiary" />
+          </Line>
+          <Line sender="addressee">
+            <Avatar slot="avatar" style="primary" src={speaker} alt="Adressee" class="h-12 w-12" />
+            <Message message="Sure!" style="primary" />
+            <a
+              class:list={[
+                'w-fit rounded p-2',
+                'flex flex-col gap-2',
+                styles.colors['primary'].base,
+                styles.colors['primary'].interactive,
+              ]}
+              href="../architecture/">
+              <p class="font-sans text-base font-medium">The architecture of this site</p>
+              <Image src={favicon} alt="Site logo" class="m-auto h-20 w-20" />
+            </a>
+          </Line>
+        </Dialogue>
+      </Chat>
+    </main>
+  </div>
+</Landing>
