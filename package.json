@@ -21,7 +21,7 @@
     "@astrojs/markdown-remark": "4.0.1",
     "@astrojs/starlight": "^0.15.0",
     "@astrojs/svelte": "^5.0.1",
-    "@astrojs/tailwind": "^5.0.3",
+    "@astrojs/tailwind": "^5.0.4",
     "@material/material-color-utilities": "^0.2.7",
     "@microsoft/eslint-formatter-sarif": "^3.0.0",
     "@prettier/plugin-xml": "^3.2.2",
