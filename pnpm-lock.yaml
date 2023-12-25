@@ -56,8 +56,8 @@ devDependencies:
     specifier: ^8.55.0
     version: 8.55.0
   eslint-plugin-astro:
-    specifier: ^0.30.0
-    version: 0.30.0(eslint@8.55.0)
+    specifier: ^0.31.0
+    version: 0.31.0(eslint@8.55.0)
   eslint-plugin-svelte:
     specifier: ^2.35.1
     version: 2.35.1(eslint@8.55.0)(svelte@4.2.8)
@@ -754,8 +754,8 @@ packages:
       '@ctrl/tinycolor': 3.6.1
       hast-util-to-html: 8.0.4
       hastscript: 7.2.0
-      postcss: 8.4.31
-      postcss-nested: 6.0.1(postcss@8.4.31)
+      postcss: 8.4.32
+      postcss-nested: 6.0.1(postcss@8.4.32)
     dev: true
 
   /@expressive-code/plugin-frames@0.29.4:
@@ -2801,8 +2801,8 @@ packages:
       eslint: 8.55.0
     dev: true
 
-  /eslint-plugin-astro@0.30.0(eslint@8.55.0):
-    resolution: {integrity: sha512-LDbbs836SiHqhuiuAF4CPqSSWsfa7R8vfX5lckphCUD/kBFIsobViI8fuTyMktQ9isCg+Q86LIQAHTFl3PWKTA==}
+  /eslint-plugin-astro@0.31.0(eslint@8.55.0):
+    resolution: {integrity: sha512-oNZj7bcpCPkebKD7ZfGflAFVUwz78ItdXeK5aVAqFpZZk1JhGaseWdU24f8r26hRte9rrT3EQV4Qwbngp2xSPA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       eslint: '>=7.0.0'
@@ -2813,7 +2813,7 @@ packages:
       astro-eslint-parser: 0.16.0
       eslint: 8.55.0
       eslint-compat-utils: 0.1.2(eslint@8.55.0)
-      postcss: 8.4.31
+      postcss: 8.4.32
       postcss-selector-parser: 6.0.13
     transitivePeerDependencies:
       - supports-color
@@ -5351,6 +5351,16 @@ packages:
       postcss: ^8.2.14
     dependencies:
       postcss: 8.4.31
+      postcss-selector-parser: 6.0.13
+    dev: true
+
+  /postcss-nested@6.0.1(postcss@8.4.32):
+    resolution: {integrity: sha512-mEp4xPMi5bSWiMbsgoPfcP74lsWLHkQbZc3sY+jWYd65CUwXrUaTp0fmNpa01ZcETKlIgUdFN/MpS2xZtqL9dQ==}
+    engines: {node: '>=12.0'}
+    peerDependencies:
+      postcss: ^8.2.14
+    dependencies:
+      postcss: 8.4.32
       postcss-selector-parser: 6.0.13
     dev: true
 
