@@ -1,15 +1,17 @@
 <script lang="ts">
-  import styles from './styles'
+  import styles from '../styles'
 
   export let href: string
   export let label: string
   export let icon: string | undefined
 
   export let style: 'primary' | 'secondary' | 'tertiary'
+  export let riseDelay: string = '0s'
 </script>
 
 <a
   type="button"
+  style="--animation-delay: {riseDelay}"
   class="
   inline-flex items-center gap-2
   {styles.colors[style].base}
