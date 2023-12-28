@@ -7,8 +7,9 @@ import Dialogue from '../lib/components/chat/Dialogue.svelte'
 import Line from '../lib/components/chat/Line.svelte'
 import Message from '../lib/components/chat/Message.svelte'
 import Avatar from '../lib/components/Avatar.astro'
-import Navigation from '../lib/components/Navigation.svelte'
+import Navigation from '../lib/components/chat/Navigation.svelte'
 import speaker from '../assets/Speaker.png'
+import { scroll } from '../lib/components/transitions'
 
 const title = 'Alexander Bzikadze'
 ---
@@ -16,25 +17,37 @@ const title = 'Alexander Bzikadze'
 <Landing>
   <div class="flex h-full flex-col justify-stretch">
     <Header class="w-full" {title} />
-    <main class="h-full">
+    <main class="h-full" transition:animate={scroll()}>
       <Chat class="h-full p-5">
         <Dialogue slot="dialogue" class="mx-auto w-full max-w-[30rem]">
-          <Line sender="addressee">
+          <Line sender="addressee" dropDuration="500ms">
             <Avatar slot="avatar" style="primary" src={speaker} alt="Adressee" class="h-12 w-12" />
-            <Message message="Hey!" style="primary" />
-            <Message message="My name is Alexander Bzikadze!" style="primary" />
-            <Message message="I am a Software Engineering Manager, based in Tokyo." style="primary" />
+            <Message message="Hey!" style="primary" dropDelay="0ms" />
+            <Message message="My name is Alexander Bzikadze!" style="primary" dropDelay="200ms" />
+            <Message message="I am a Software Engineering Manager, based in Tokyo." style="primary" dropDelay="400ms" />
             <Message
               message="My professional interests cover Teams Management,  Technical Leadership and Organization Design."
               style="primary"
+              dropDelay="600ms"
             />
-            <Message message="I am also a pianist, D&D Game Master and Georgian cuisine enthusiast." style="primary" />
-            <Message message="It is a pleasure to welcome you!" style="primary" />
-            <Message message="What would you like to learn next?" style="primary" />
+            <Message
+              message="I am also a pianist, D&D Game Master and Georgian cuisine enthusiast."
+              style="primary"
+              dropDelay="800ms"
+            />
+            <Message message="It is a pleasure to welcome you!" style="primary" dropDelay="1000ms" />
+            <Message
+              message="What would you like to learn next?"
+              style="primary"
+              dropDelay="1200ms"
+              on:animationend={() => console.log('end')}
+            />
           </Line>
         </Dialogue>
-        <Response slot="response">
-          <Navigation style="tertiary" label="Your Portfolio" href="./portfolio/" icon="send" />
+        <Response slot="response" riseDuration="500ms">
+          <span transition:name="portfolio">
+            <Navigation style="tertiary" label="Your Portfolio" href="./portfolio/" icon="send" riseDelay="1400ms" />
+          </span>
         </Response>
       </Chat>
     </main>

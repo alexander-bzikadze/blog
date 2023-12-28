@@ -12,6 +12,12 @@ const bg = {
 const base = import.meta.env.BASE_URL
 ---
 
+<script>
+  document.addEventListener('astro:after-swap', () => {
+    document.documentElement.dataset['loaded'] = ''
+  })
+</script>
+
 <html class="h-screen" lang="en">
   <head>
     <title>Alexander Bzikadze</title>

@@ -10,6 +10,7 @@ import Message from '../lib/components/chat/Message.svelte'
 import Chat from '../lib/components/chat/Chat.svelte'
 import favicon from '../../public/favicon.svg'
 import styles from '../lib/components/styles'
+import { scroll } from '../lib/components/transitions'
 
 const title = 'Alexander Bzikadze'
 ---
@@ -18,11 +19,13 @@ const title = 'Alexander Bzikadze'
   <div class="flex
     h-full flex-col">
     <Header {title} />
-    <main class="h-full">
+    <main class="h-full" transition:animate={scroll()}>
       <Chat class="h-full p-5">
         <Dialogue slot="dialogue" class="mx-auto w-full max-w-[30rem]">
           <Line sender="addresser">
-            <Message message="Your Portfolio" style="tertiary" />
+            <span transition:name="portfolio">
+              <Message message="Your Portfolio" style="tertiary" />
+            </span>
           </Line>
           <Line sender="addressee">
             <Avatar slot="avatar" style="primary" src={speaker} alt="Adressee" class="h-12 w-12" />

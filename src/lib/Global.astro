@@ -4,4 +4,28 @@
     backdrop-filter: blur(11px);
     -webkit-backdrop-filter: blur(11px);
   }
+
+  @keyframes astroSlideFromBottom {
+    from {
+      transform: translateY(100%);
+    }
+  }
+
+  @keyframes astroSlideFromTop {
+    from {
+      transform: translateY(-100%);
+    }
+  }
+
+  @keyframes astroSlideToBottom {
+    to {
+      transform: translateY(100%);
+    }
+  }
+
+  @keyframes astroSlideToTop {
+    to {
+      transform: translateY(-100%);
+    }
+  }
 </style>
