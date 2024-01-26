@@ -27,7 +27,7 @@
     "@prettier/plugin-xml": "^3.2.2",
     "@tsconfig/strictest": "^2.0.2",
     "@types/mdast": "^4.0.3",
-    "@typescript-eslint/eslint-plugin": "^6.16.0",
+    "@typescript-eslint/eslint-plugin": "^6.19.1",
     "@typescript-eslint/parser": "^6.16.0",
     "astro": "^4.0.8",
     "astro-eslint-parser": "^0.16.0",
