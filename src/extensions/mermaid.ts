@@ -17,6 +17,12 @@ export default (() => (tree: Root) => {
     }
     const htmlNode = node as unknown as Html
     htmlNode.type = 'html'
-    htmlNode.value = `<pre class="${CSS_CLASSNAME}">${node.value}</pre>`
+    const value = node.value
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;')
+    htmlNode.value = `<pre class="${CSS_CLASSNAME}">${value}</pre>`
   })
 }) satisfies RemarkPlugin<[]>

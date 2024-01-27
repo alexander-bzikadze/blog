@@ -24,8 +24,8 @@ export class MermaidFacade {
   }
 
   private async render(element: Element): Promise<void> {
-    const id = crypto.randomUUID(),
-      code = element.innerHTML,
+    const id = 'mermaid-' + crypto.randomUUID(),
+      code = element.textContent ?? '',
       { svg, bindFunctions } = await mermaid.render(id, code, element)
     element.innerHTML = svg
     bindFunctions?.(element)
