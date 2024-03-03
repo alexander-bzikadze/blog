@@ -25,35 +25,8 @@ const svelteIntegration: AstroIntegration = svelte({
   ],
 })
 
-/**
- * @description Sidebar navigation for architecture description, implemented with starlight.
- *              Required as currently starlight [does not support index pages](https://github.com/withastro/starlight/issues/370).
- */
-const architectureSidebar: NonNullable<Parameters<typeof starlight>[0]['sidebar']>[0] = {
-  label: 'Architecture Description',
-  items: [
-    { label: 'Architecture Description', link: '/architecture/' },
-    {
-      label: 'Stakeholders',
-      autogenerate: { directory: '/architecture/stakeholders/' },
-      collapsed: true,
-    },
-    {
-      label: 'Concerns',
-      autogenerate: { directory: '/architecture/concerns/' },
-      collapsed: true,
-    },
-    {
-      label: 'Architecture Decision Records',
-      autogenerate: { directory: '/architecture/decisions/' },
-      collapsed: true,
-    },
-  ],
-}
-
 const starlightIntegration: AstroIntegration = starlight({
   title: 'Alexander Bzikadze Personal Website',
-  sidebar: [architectureSidebar],
   head: [],
   components: {
     Header: './src/lib/starlight/header/Header.astro',
