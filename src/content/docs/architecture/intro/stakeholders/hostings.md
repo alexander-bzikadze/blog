@@ -16,7 +16,7 @@ Hosting service providers offer the necessary infrastructure and services to ens
 
 ## Interest
 
-**Moderate Interest**. Ensuring client satisfaction to retain business and uphold their reputation.
+**Minimal Interest**. Ensuring client satisfaction to retain business and uphold their reputation. However, the influence of the site is minimal.
 
 ## Power
 

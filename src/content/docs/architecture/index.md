@@ -17,10 +17,10 @@ This clause specifies the format of this and all its subsequent pages.
 This page and all its subsequent pages MAY be referred to as `document`.
 References to `this page`` specifically denote the content on the current webpage.
 
-This document follows [ISO/IEC/IEEE 42010:2011](https://www.iso.org/standard/50508.html).
-Any terms, specified in `ISO/IEC/IEEE 42010:2011`, Clause 3, and mentioned in this document MUST be interpreted according to their definition in `ISO/IEC/IEEE 42010:2011`.
+This document follows [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/50508.html).
+Any terms, specified in `ISO/IEC/IEEE 42010:2022`, Clause 3, and mentioned in this document MUST be interpreted according to their definition in `ISO/IEC/IEEE 42010:2011`.
 
-This document is planned to be updated to [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html).
+This document [follows](../adr/13.md) [arc42](https://arc42.org/) architecture description template, but potentially can extend it according to the needs of the product.
 
 ## System of Interest
 
