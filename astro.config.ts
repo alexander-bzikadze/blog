@@ -30,6 +30,7 @@ const starlightIntegration: AstroIntegration = starlight({
   head: [],
   components: {
     Header: './src/lib/starlight/header/Header.astro',
+    Sidebar: './src/lib/starlight/sidebar/Sidebar.astro',
   },
 })
 
