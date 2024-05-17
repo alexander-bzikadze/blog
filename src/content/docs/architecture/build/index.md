@@ -1,6 +1,6 @@
 ---
 title: Building Block View
-sidebar: {}
+sidebar: { order: 5000 }
 head: []
 ---
 

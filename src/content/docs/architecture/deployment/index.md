@@ -1,6 +1,6 @@
 ---
 title: Deployment View
-sidebar: {}
+sidebar: { order: 7000 }
 head: []
 ---
 

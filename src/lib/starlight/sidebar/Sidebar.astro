@@ -1,12 +1,96 @@
 ---
 import type { Props } from '@astrojs/starlight/props'
 import MobileMenuFooter from '@astrojs/starlight/components/MobileMenuFooter.astro'
-import SidebarSublist from './SidebarSublist.astro'
+import type { SidebarEntry, Link } from '@astrojs/starlight/utils/navigation'
+import ArchSidebarEntryComponent, { ArchSidebarEntry } from './SidebarEntry.astro'
+
+type ArchSidebar = ArchSidebarEntry[]
+
+function newArchSidebar(sidebar: SidebarEntry[]): ArchSidebar {
+  return sidebar.map(entry => {
+    if (entry.type === 'link') {
+      return {
+        label: entry.label,
+        link: {
+          href: entry.href,
+          isCurrent: entry.isCurrent,
+          attrs: entry.attrs,
+        },
+        badge: entry.badge,
+      } satisfies ArchSidebarEntry
+    } else if (entry.type === 'group') {
+      const indexLink = entry.entries.find(
+        subentry => subentry.type === 'link' && subentry.href.endsWith(entry.label + '/'),
+      ) as Link | undefined
+      const entriesWithoutIndex = entry.entries.filter(subentry => subentry !== indexLink)
+
+      return {
+        label: indexLink?.label ?? entry.label,
+        ...(indexLink
+          ? {
+              link: {
+                href: indexLink.href,
+                isCurrent: indexLink.isCurrent,
+                attrs: indexLink.attrs,
+              },
+            }
+          : {}),
+        ...(entriesWithoutIndex.length > 0
+          ? {
+              group: {
+                entries: newArchSidebar(entriesWithoutIndex),
+                collapsed: entry.collapsed,
+              },
+            }
+          : {}),
+        badge: indexLink?.badge ?? entry.badge,
+      } satisfies ArchSidebarEntry
+    }
+    throw new Error('Unreachable code')
+  })
+}
 
 const { sidebar } = Astro.props
+const archSidebar = newArchSidebar(sidebar)
 ---
 
-<SidebarSublist sublist={sidebar} />
+<ul class="top-level">
+  {
+    archSidebar.map(entry => (
+      <li>
+        <ArchSidebarEntryComponent entry={entry} />
+      </li>
+    ))
+  }
+</ul>
 <div class="md:sl-hidden">
   <MobileMenuFooter {...Astro.props} />
 </div>
+
+<style>
+  ul {
+    --sl-sidebar-item-padding-inline: 0.5rem;
+    list-style: none;
+    padding: 0;
+  }
+
+  li {
+    overflow-wrap: anywhere;
+  }
+
+  ul ul li {
+    margin-inline-start: var(--sl-sidebar-item-padding-inline);
+    border-inline-start: 1px solid var(--sl-color-hairline-light);
+    padding-inline-start: var(--sl-sidebar-item-padding-inline);
+  }
+
+  .top-level > li + li {
+    margin-top: 0.75rem;
+  }
+
+  @media (min-width: 50rem) {
+    .top-level > li + li {
+      margin-top: 0.5rem;
+    }
+  }
+</style>

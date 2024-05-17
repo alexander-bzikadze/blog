@@ -1,7 +1,7 @@
 ---
 title: Hosting Service Providers
 sidebar:
-  order: 6
+  order: 2006
 head: []
 ---
 
