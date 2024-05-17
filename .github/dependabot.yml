@@ -16,8 +16,10 @@ updates:
     groups:
       security:
         applies-to: security-updates
+        patterns: "**"
       development:
         applies-to: version-updates
+        patterns: "**"
     directory: '/'
     schedule:
       interval: 'weekly'
@@ -32,6 +34,7 @@ updates:
     groups:
       security:
         applies-to: security-updates
+        patterns: "**"
       development:
         applies-to: version-updates
         dependency-type: development
