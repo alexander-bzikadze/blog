@@ -15,3 +15,5 @@ deno.jsonc
 deno.lock
 deps.ts
 
+# Github
+.github/dependabot.yml
