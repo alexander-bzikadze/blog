@@ -13,7 +13,11 @@ updates:
     commit-message:
       prefix: 'Update Github Actions'
       include: scope
-  - package-ecosystem: 'npm'
+    groups:
+      security:
+        applies-to: security-updates
+      development:
+        applies-to: version-updates
     directory: '/'
     schedule:
       interval: 'weekly'
@@ -25,3 +29,12 @@ updates:
       prefix: Update pnpm dependencies
       prefix-development: Update pnpm dev dependencies
       include: scope
+    groups:
+      security:
+        applies-to: security-updates
+      development:
+        applies-to: version-updates
+        dependency-type: development
+      production:
+        applies-to: version-updates
+        dependency-type: production
