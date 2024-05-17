@@ -1,0 +1,161 @@
+---
+import { LinkHTMLAttributes } from '@astrojs/starlight/schemas/sidebar'
+import { Badge } from '@astrojs/starlight/schemas/badge'
+import { Icon } from '@astrojs/starlight/components'
+import BadgeComponent from '@astrojs/starlight/components/Badge.astro'
+
+interface Props {
+  entry: ArchSidebarEntry
+}
+
+export interface ArchSidebarEntry {
+  label: string
+  link?: {
+    href: string
+    isCurrent: boolean
+    attrs: LinkHTMLAttributes
+  }
+  group?: {
+    entries: ArchSidebarEntry[]
+    collapsed: boolean
+  }
+  badge: Badge | undefined
+}
+
+const { entry } = Astro.props
+const isOpen = (entry: ArchSidebarEntry) => entry.link?.isCurrent || entry.group?.entries?.some(isOpen)
+---
+
+{
+  (() => {
+    const label = entry.link ? (
+      <a
+        href={entry.link.href}
+        aria-current={entry.link.isCurrent && 'page'}
+        class:list={['large', entry.link.attrs.class]}
+        {...entry.link.attrs}>
+        {entry.label}
+        {entry.badge && (
+          <>
+            {' '}
+            <BadgeComponent text={entry.badge.text} variant={entry.badge.variant} />
+          </>
+        )}
+      </a>
+    ) : (
+      <div class="group-label">
+        <span class="large">{entry.label}</span>
+        {entry.badge && (
+          <>
+            {' '}
+            <BadgeComponent text={entry.badge.text} variant={entry.badge.variant} />
+          </>
+        )}
+      </div>
+    )
+
+    const wrapper = entry.group ? (
+      <details open={isOpen(entry)}>
+        <summary>
+          {label}
+          <Icon name="right-caret" class="caret" size="1.25rem" />
+        </summary>
+        <ul>
+          {entry.group.entries.map(subentry => (
+            <li>
+              <Astro.self entry={subentry} />
+            </li>
+          ))}
+        </ul>
+      </details>
+    ) : (
+      label
+    )
+
+    return wrapper
+  })()
+}
+
+<style>
+  ul {
+    --sl-sidebar-item-padding-inline: 0.5rem;
+    list-style: none;
+    padding: 0;
+  }
+
+  li {
+    overflow-wrap: anywhere;
+  }
+
+  ul ul li {
+    margin-inline-start: var(--sl-sidebar-item-padding-inline);
+    border-inline-start: 1px solid var(--sl-color-hairline-light);
+    padding-inline-start: var(--sl-sidebar-item-padding-inline);
+  }
+
+  .large {
+    font-size: var(--sl-text-lg);
+    font-weight: 600;
+    color: var(--sl-color-white);
+  }
+
+  summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    line-height: 1.4;
+    cursor: pointer;
+    user-select: none;
+  }
+  summary::marker,
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .caret {
+    transition: transform 0.2s ease-in-out;
+    flex-shrink: 0;
+  }
+  :global([dir='rtl']) .caret {
+    transform: rotateZ(180deg);
+  }
+  [open] > summary .caret {
+    transform: rotateZ(90deg);
+  }
+
+  a {
+    display: block;
+    border-radius: 0.25rem;
+    text-decoration: none;
+    color: var(--sl-color-gray-2);
+    padding: 0.3em var(--sl-sidebar-item-padding-inline);
+    line-height: 1.4;
+  }
+
+  a:hover,
+  a:focus {
+    color: var(--sl-color-white);
+  }
+
+  [aria-current='page'],
+  [aria-current='page']:hover,
+  [aria-current='page']:focus {
+    font-weight: 600;
+    color: var(--sl-color-text-invert);
+    background-color: var(--sl-color-text-accent);
+  }
+
+  a > *:not(:last-child),
+  .group-label > *:not(:last-child) {
+    margin-inline-end: 0.25em;
+  }
+
+  @media (min-width: 50rem) {
+    .large {
+      font-size: var(--sl-text-base);
+    }
+    a {
+      font-size: var(--sl-text-sm);
+    }
+  }
+</style>

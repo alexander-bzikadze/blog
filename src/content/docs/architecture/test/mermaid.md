@@ -1,7 +1,7 @@
 ---
 title: Mermaid Test
 sidebar:
-  hide: true
+  hidden: true
 head: []
 ---
 
