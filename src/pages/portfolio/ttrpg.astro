@@ -1,0 +1,56 @@
+---
+import Landing from '../../layout/Landing.astro'
+import Header from '../../lib/Header.astro'
+import Avatar from '../../lib/components/Avatar.astro'
+import speaker from '../../assets/Speaker.png'
+import Dialogue from '../../lib/components/chat/Dialogue.svelte'
+import Line from '../../lib/components/chat/Line.svelte'
+import Message from '../../lib/components/chat/Message.svelte'
+import Chat from '../../lib/components/chat/Chat.svelte'
+import { scroll } from '../../lib/components/transitions'
+
+const title = 'Alexander Bzikadze'
+---
+
+<Landing>
+  <div class="flex
+    h-full flex-col">
+    <Header {title} />
+    <main class="h-full" transition:animate={scroll()}>
+      <Chat class="h-full p-5">
+        <Dialogue slot="dialogue" class="mx-auto w-full max-w-[30rem]">
+          <Line sender="addresser">
+            <span transition:name="ttrpg">
+              <Message message="Your TTRPGs" style="tertiary" />
+            </span>
+          </Line>
+          <Line sender="addressee">
+            <Avatar slot="avatar" style="primary" src={speaker} alt="Adressee" class="h-12 w-12" />
+            <Message message="Absolutely!" style="primary" />
+            <Message message="I have started playing TTRPGs in 2022" style="primary" />
+            <Message
+              message="Currently I am one of the game masters for the Russian-speaking community here in Tokyo. We have around 150 members and growing."
+              style="primary"
+            />
+            <a href="https://t.me/nippondnd">
+              <Message message="If you are interested, click on this message to join!" style="primary" />
+            </a>
+            <Message message="Also, check out games that I create, host and publish on Github:" style="primary" />
+            <a href="https://github.com/alexander-bzikadze/missing-in-heyholn">
+              <Message
+                message="Missing in Heyholn: a D&D 5e one-shot about a group of adventures, uncovering the mistery behind a missing mayor in a half-ruined town of Heyholn."
+                style="primary"
+              />
+            </a>
+            <a href="https://github.com/alexander-bzikadze/dragoriddon">
+              <Message
+                message="Dragoriddon: a D&D 5e one-shot about a group of prisoners, meant to be sacrificed to the dragon, ruling the world, but instead finding themselves escaping the world's end."
+                style="primary"
+              />
+            </a>
+          </Line>
+        </Dialogue>
+      </Chat>
+    </main>
+  </div>
+</Landing>

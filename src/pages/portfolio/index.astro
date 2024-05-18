@@ -1,16 +1,16 @@
 ---
 import { Image } from 'astro:assets'
-import Landing from '../layout/Landing.astro'
-import Header from '../lib/Header.astro'
-import Avatar from '../lib/components/Avatar.astro'
-import speaker from '../assets/Speaker.png'
-import Dialogue from '../lib/components/chat/Dialogue.svelte'
-import Line from '../lib/components/chat/Line.svelte'
-import Message from '../lib/components/chat/Message.svelte'
-import Chat from '../lib/components/chat/Chat.svelte'
-import favicon from '../../public/favicon.svg'
-import styles from '../lib/components/styles'
-import { scroll } from '../lib/components/transitions'
+import Landing from '../../layout/Landing.astro'
+import Header from '../../lib/Header.astro'
+import Avatar from '../../lib/components/Avatar.astro'
+import speaker from '../../assets/Speaker.png'
+import Dialogue from '../../lib/components/chat/Dialogue.svelte'
+import Line from '../../lib/components/chat/Line.svelte'
+import Message from '../../lib/components/chat/Message.svelte'
+import Chat from '../../lib/components/chat/Chat.svelte'
+import favicon from '../../../public/favicon.svg'
+import styles from '../../lib/components/styles'
+import { scroll } from '../../lib/components/transitions'
 
 const title = 'Alexander Bzikadze'
 ---
@@ -40,6 +40,17 @@ const title = 'Alexander Bzikadze'
               href="../architecture/">
               <p class="font-sans text-base font-medium">The architecture of this site</p>
               <Image src={favicon} alt="Site logo" class="m-auto h-20 w-20" />
+            </a>
+            <a
+              class:list={[
+                'w-fit rounded p-2',
+                'flex flex-col gap-2',
+                styles.colors['primary'].base,
+                styles.colors['primary'].interactive,
+              ]}
+              transition:name="ttrpg"
+              href="./ttrpg/">
+              <p class="font-sans text-base font-medium">My TTRPGs</p>
             </a>
           </Line>
         </Dialogue>
